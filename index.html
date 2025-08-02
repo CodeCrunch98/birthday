@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday My Love 💖</title>
+    <title>Happy Birthday Anne 💖</title>
     <link rel="icon" type="image/png" href="resources/favicon.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&display=swap');
@@ -96,7 +96,7 @@
         .birthday-title {
             font-family: 'Dancing Script', cursive;
             font-size: 2.5rem;
-            color: #ff1493;
+            color: #ff149369;
             text-align: center;
             margin: 20px 0;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
@@ -119,8 +119,8 @@
             width: 300px;
             height: auto;
             position: relative;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-radius: 20px;
+            /* box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px; */
             transition: transform 0.3s ease;
         }
 
@@ -182,109 +182,24 @@
             }
         }
 
-        /* Photo Collage */
-        .photo-collage {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 15px;
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 15px;
-        }
-
-        .photo-frame {
-            background: white;
-            padding: 8px;
-            border-radius: 12px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transform: rotate(-8deg);
-            transition: transform 0.3s ease;
-            opacity: 0;
-            position: relative;
-        }
-
-        .photo-frame:nth-child(even) {
-            transform: rotate(8deg);
-        }
-
-        .photo-frame:hover {
-            transform: rotate(0deg) scale(1.03);
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        /* Nail effect - small black dot in left corner */
-        .photo-frame::before {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 6px;
-            height: 6px;
-            background: #000;
-            border-radius: 50%;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-        }
-
-
-
-        .photo-frame.fade-in {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .photo-frame:nth-child(even).fade-in {
-            animation: fadeInUpEven 0.8s ease-out forwards;
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) rotate(-8deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotate(-8deg);
-            }
-        }
-
-        @keyframes fadeInUpEven {
-            0% {
-                opacity: 0;
-                transform: translateY(30px) rotate(8deg);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) rotate(8deg);
-            }
-        }
-
         /* Surprise Message */
         .surprise-message {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: linear-gradient(45deg, #e91e63, #c2185b);
-            color: white;
+            background: transparent;
+            color: black;
             padding: 25px;
             border-radius: 20px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            z-index: 20;
-            display: none;
             text-align: center;
-            max-width: 420px;
-            animation: popIn 0.5s ease-out;
+            max-width: 600px;
+            margin: 30px auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
         }
 
-        @keyframes popIn {
-            0% { transform: translate(-50%, -50%) scale(0); }
-            100% { transform: translate(-50%, -50%) scale(1); }
+        .surprise-message.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .surprise-message h2 {
@@ -349,7 +264,7 @@
             .surprise-message {
                 max-width: 90%;
                 padding: 20px;
-                margin: 10px;
+                margin: 20px auto;
             }
 
             .surprise-message h2 {
@@ -363,23 +278,7 @@
                 margin-bottom: 6px;
             }
 
-            .photo-collage {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 12px;
-            }
 
-            .photo-frame img {
-                height: 100px;
-            }
-
-            /* Disable heavy animations on mobile */
-            .stars {
-                display: none;
-            }
-
-            .heart {
-                display: none;
-            }
         }
 
         @media (max-width: 480px) {
@@ -403,7 +302,7 @@
             .surprise-message {
                 max-width: 95%;
                 padding: 15px;
-                margin: 5px;
+                margin: 15px auto;
             }
 
             .surprise-message h2 {
@@ -416,22 +315,13 @@
                 line-height: 1.2;
                 margin-bottom: 5px;
             }
-
-            .photo-collage {
-                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-                gap: 10px;
-            }
-
-            .photo-frame img {
-                height: 80px;
-            }
         }
     </style>
 </head>
 <body>
     <!-- Background Music -->
     <audio id="bgMusic" loop>
-        <source src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT" type="audio/wav">
+        <source src="resources/hbd.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Night Sky Overlay for Smooth Transition -->
@@ -445,7 +335,7 @@
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
-        <h1 class="birthday-title">Happy Birthday My Love 💖</h1>
+        <h1 class="birthday-title">Happy Birthday Anne 💖</h1>
         
         <div class="cake-container">
             <div class="cake">
@@ -453,58 +343,21 @@
             </div>
         </div>
 
-        <div class="photo-collage">
-            <div class="photo-frame">
-                <img src="images/1000110246.jpg" alt="Beautiful Memory 1">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110247.jpg" alt="Beautiful Memory 2">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110248.jpg" alt="Beautiful Memory 3">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110249.jpg" alt="Beautiful Memory 4">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110250.jpg" alt="Beautiful Memory 5">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110251.jpg" alt="Beautiful Memory 6">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110252.jpg" alt="Beautiful Memory 7">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110253.jpg" alt="Beautiful Memory 8">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110254.jpg" alt="Beautiful Memory 9">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110255.jpg" alt="Beautiful Memory 10">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110256.jpg" alt="Beautiful Memory 11">
-            </div>
-            <div class="photo-frame">
-                <img src="images/1000110257.jpg" alt="Beautiful Memory 12">
-            </div>
+        <!-- Surprise Message -->
+        <div class="surprise-message" id="surpriseMessage">
+            <h2>🎉 Happy Birthday! 🎉</h2>
+            <p>Today is as beautiful as other days, but you realize another year has gone in a blink of the eyes. However, today is just special, so special to you! 💖</p>
+            <p>Let's make it the best celebration ever and let me share a piece of happiness to you. I made all this as a birthday present to you! ✨</p>
+            <p>Thanks for the friendship we made, thanks for everything. I wish you all the best. May your life be at ease, may all your wishes come true! 🌟</p>
+            <p>Remember your ambitions, you live as a free bird flying in the blue sky. Now things are different, the real story of your life is just about to begin! 💕</p>
+            <p>Don't worry because this year will be better and I hope you'll find happiness along the way. Keep your spirit up, enjoy every single moment that you experience today! 🎂</p>
+            <p>Fill it with your most beautiful smile and make it the best memory. Lastly, I'd like to wish you one more time - a very happy birthday Anne! 🎉</p>
         </div>
-    </div>
-
-    <!-- Surprise Message -->
-    <div class="surprise-message" id="surpriseMessage">
-        <h2>🎉 Happy Birthday My Beautiful! 🎉</h2>
-        <p>To the most amazing person in my life, you make every day feel like a celebration! 💖</p>
-        <p>Your smile lights up my world, your love makes my heart complete, and your presence makes every moment magical! ✨</p>
-        <p>Thank you for being the incredible person you are - kind, loving, beautiful inside and out! 🌟</p>
-        <p>May this year bring you all the joy, love, and happiness you deserve! I love you more than words can express! 💕</p>
     </div>
 
     <!-- Music Control -->
     <div class="music-control">
-        <button onclick="toggleMusic()" id="musicBtn">🎵 Play Music</button>
+        <button onclick="toggleMusic()" id="musicBtn">🎵 Music</button>
     </div>
 
     <script>
@@ -513,40 +366,39 @@
         const bgMusic = document.getElementById('bgMusic');
         const musicBtn = document.getElementById('musicBtn');
 
-        // Create simplified stars (only on desktop)
+        // Create simplified stars (for all screen sizes)
         function createStars() {
-            if (window.innerWidth > 768) {
-                const starsContainer = document.createElement('div');
-                starsContainer.className = 'stars';
-                document.body.appendChild(starsContainer);
+            const starsContainer = document.createElement('div');
+            starsContainer.className = 'stars';
+            document.body.appendChild(starsContainer);
 
-                for (let i = 0; i < 20; i++) {
-                    const star = document.createElement('div');
-                    star.className = 'star';
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.top = Math.random() * 100 + '%';
-                    star.style.animationDelay = Math.random() * 4 + 's';
-                    starsContainer.appendChild(star);
-                }
+            // Adjust number of stars based on screen size for performance
+            const starCount = window.innerWidth > 768 ? 20 : 12;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 4 + 's';
+                starsContainer.appendChild(star);
             }
         }
 
-        // Create simplified hearts (only on desktop)
+        // Create simplified hearts (for all screen sizes)
         function createHearts() {
-            if (window.innerWidth > 768) {
-                setInterval(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'heart';
-                    heart.innerHTML = '💖';
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDuration = (Math.random() * 2 + 6) + 's';
-                    document.body.appendChild(heart);
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (Math.random() * 2 + 6) + 's';
+                document.body.appendChild(heart);
 
-                    setTimeout(() => {
-                        heart.remove();
-                    }, 8000);
-                }, 3000);
-            }
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 3000);
         }
 
         // Create simplified fireworks
@@ -587,24 +439,14 @@
                     countdownContainer.style.display = 'none';
                     mainContent.style.display = 'block';
                     
-                    // Start photo animation after a short delay
+                    // Show surprise message with fade-in effect after a short delay
                     setTimeout(() => {
-                        startPhotoAnimation();
-                    }, 500);
+                        document.getElementById('surpriseMessage').classList.add('show');
+                    }, 1000);
                     
-                    // Wait 3 seconds, then transition to night sky and start fireworks
+                    // Start fireworks after a delay
                     setTimeout(() => {
-                        document.body.classList.add('night-sky');
-                        
-                        // Start fireworks after night sky transition
-                        setTimeout(() => {
-                            createFireworks();
-                        }, 1000);
-                        
-                        // Show surprise message after fireworks
-                        setTimeout(() => {
-                            document.getElementById('surpriseMessage').style.display = 'block';
-                        }, 3000);
+                        createFireworks();
                     }, 3000);
                 }
             }, 1000);
@@ -688,12 +530,12 @@
         // Toggle music
         function toggleMusic() {
             if (musicPlaying) {
-                stopBirthdayMelody();
-                musicBtn.textContent = '🎵 Play Music';
+                bgMusic.pause();
+                musicBtn.textContent = '🎵 Music';
                 musicPlaying = false;
             } else {
-                playBirthdayMelody();
-                musicBtn.textContent = '🔇 Stop Music';
+                bgMusic.play();
+                musicBtn.textContent = '🔇 Music';
                 musicPlaying = true;
             }
         }
@@ -705,21 +547,7 @@
             startCountdown();
         });
 
-        // Staggered fade-in for photos
-        function startPhotoAnimation() {
-            const photoFrames = document.querySelectorAll('.photo-frame');
-            
-            photoFrames.forEach((frame, index) => {
-                setTimeout(() => {
-                    frame.classList.add('fade-in');
-                }, index * 200); // 200ms delay between each photo
-            });
-        }
 
-        // Close surprise message
-        document.getElementById('surpriseMessage').addEventListener('click', function() {
-            this.style.display = 'none';
-        });
     </script>
 </body>
 </html> 
