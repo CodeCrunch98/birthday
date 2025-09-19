@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Anne 💖</title>
+    <title>Happy Birthday Baby 💖</title>
     <link rel="icon" type="image/png" href="resources/favicon.png">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Pacifico&display=swap');
@@ -23,6 +23,93 @@
             transition: background 2s ease-in-out;
         }
 
+        /* Photo Collage Background */
+        .photo-collage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 3px;
+            opacity: 0;
+            transition: opacity 3s ease-in-out;
+        }
+
+        .photo-collage.show {
+            display: grid;
+            opacity: 1;
+        }
+
+        .photo-collage.night-mode {
+            opacity: 1;
+        }
+
+        .photo-collage.show.night-mode {
+            display: grid;
+            opacity: 1;
+        }
+
+        .photo-item {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 8px;
+            transition: transform 0.3s ease, opacity 1s ease;
+            opacity: 0;
+            animation: slowFadeIn 3s ease-in-out forwards;
+        }
+
+        @keyframes slowFadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Rotate landscape photos to portrait orientation */
+        .photo-1, .photo-2, .photo-3, .photo-4, .photo-5, .photo-6, .photo-7 {
+            transform: rotate(-90deg);
+        }
+
+        .photo-item:hover {
+            opacity: 1;
+        }
+
+        /* Hover effects for rotated landscape photos */
+        .photo-1:hover, .photo-2:hover, .photo-3:hover, .photo-4:hover, .photo-5:hover, .photo-6:hover, .photo-7:hover {
+            transform: scale(1.02) rotate(-90deg);
+        }
+
+        /* Hover effect for portrait photo (no rotation) */
+        .photo-8:hover {
+            transform: scale(1.02);
+        }
+
+        /* Staggered fade-in delays for each photo */
+        .photo-1 { animation-delay: 0.2s; }
+        .photo-2 { animation-delay: 0.4s; }
+        .photo-3 { animation-delay: 0.6s; }
+        .photo-4 { animation-delay: 0.8s; }
+        .photo-5 { animation-delay: 1.0s; }
+        .photo-6 { animation-delay: 1.2s; }
+        .photo-7 { animation-delay: 1.4s; }
+        .photo-8 { animation-delay: 1.6s; }
+
+        /* Individual photo backgrounds - using actual images from resources folder */
+        .photo-1 { background-image: url('resources/landscape1.jpg'); }
+        .photo-2 { background-image: url('resources/landscape2.jpg'); }
+        .photo-3 { background-image: url('resources/landscape3.jpg'); }
+        .photo-4 { background-image: url('resources/landscape4.jpg'); }
+        .photo-5 { background-image: url('resources/landscape5.jpg'); }
+        .photo-6 { background-image: url('resources/landscape6.jpg'); }
+        .photo-7 { background-image: url('resources/portrait1.jpg'); }
+
         body.night-sky {
             background: url('resources/night-sky.jpg') no-repeat center center fixed;
             background-size: cover;
@@ -36,7 +123,7 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 1;
+            z-index: 2;
         }
 
         .star {
@@ -60,7 +147,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            z-index: 10;
+            z-index: 15;
             background: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 20px;
@@ -87,7 +174,7 @@
         .main-content {
             display: none;
             position: relative;
-            z-index: 2;
+            z-index: 5;
             padding: 20px;
             text-align: center;
         }
@@ -184,17 +271,21 @@
 
         /* Surprise Message */
         .surprise-message {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             color: black;
             padding: 25px;
             border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 
+                        0 0 0 1px rgba(255, 255, 255, 0.1) inset;
             text-align: center;
             max-width: 600px;
             margin: 30px auto;
             opacity: 0;
             transform: translateY(30px);
-            transition: all 1s ease-out;
+            transition: all 3s ease-out;
         }
 
         .surprise-message.show {
@@ -244,6 +335,13 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            .photo-collage {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 2px;
+                opacity: 1;
+            }
+
             .birthday-title {
                 font-size: 2rem;
             }
@@ -277,11 +375,16 @@
                 line-height: 1.3;
                 margin-bottom: 6px;
             }
-
-
         }
 
         @media (max-width: 480px) {
+            .photo-collage {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(4, 1fr);
+                gap: 2px;
+                opacity: 1;
+            }
+
             .birthday-title {
                 font-size: 1.8rem;
             }
@@ -319,6 +422,18 @@
     </style>
 </head>
 <body>
+    <!-- Photo Collage Background -->
+    <div class="photo-collage" id="photoCollage">
+        <div class="photo-item photo-1"></div>
+        <div class="photo-item photo-2"></div>
+        <div class="photo-item photo-3"></div>
+        <div class="photo-item photo-4"></div>
+        <div class="photo-item photo-5"></div>
+        <div class="photo-item photo-6"></div>
+        <div class="photo-item photo-7"></div>
+        <div class="photo-item photo-8"></div>
+    </div>
+
     <!-- Background Music -->
     <audio id="bgMusic" loop>
         <source src="resources/hbd.mp3" type="audio/mpeg">
@@ -335,7 +450,7 @@
 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
-        <h1 class="birthday-title">Happy Birthday Anne 💖</h1>
+        <h1 class="birthday-title">Happy Birthday Baby 💖</h1>
         
         <div class="cake-container">
             <div class="cake">
@@ -345,13 +460,13 @@
 
         <!-- Surprise Message -->
         <div class="surprise-message" id="surpriseMessage">
-            <h2>🎉 Happy Birthday! 🎉</h2>
-            <p>Today is as beautiful as other days, but you realize another year has gone in a blink of the eyes. However, today is just special, so special to you! 💖</p>
-            <p>Let's make it the best celebration ever and let me share a piece of happiness to you. I made all this as a birthday present to you! ✨</p>
-            <p>Thanks for the friendship we made, thanks for everything. I wish you all the best. May your life be at ease, may all your wishes come true! 🌟</p>
-            <p>Remember your ambitions, you live as a free bird flying in the blue sky. Now things are different, the real story of your life is just about to begin! 💕</p>
-            <p>Don't worry because this year will be better and I hope you'll find happiness along the way. Keep your spirit up, enjoy every single moment that you experience today! 🎂</p>
-            <p>Fill it with your most beautiful smile and make it the best memory. Lastly, I'd like to wish you one more time - a very happy birthday Anne! 🎉</p>
+            <h2>🎉 Happy Birthday, My Love! 🎉</h2>
+            <p>Even though we’re miles apart, my heart is right there with you today. 💖 From Korea to India, no distance could ever lessen what I feel for you.</p>
+            <p>Today is more than just your birthday it's a celebration of the amazing person you are. I may not be there in person to hold your hand, but I'm sending you all my love and warmth through this message. ✨</p>
+            <p>Thank you for being in my life, even from afar. You've made my days brighter, my heart fuller, and my world so much better. I'm so lucky to have you. May all your dreams come true and may life bring you endless happiness. 🌟</p>
+            <p>You are strong, beautiful, and full of potential. This year is yours full of new beginnings, love, and growth. 💕</p>
+            <p>Let's make a promise to keep moving forward together, no matter the distance. One day, we'll look back and smile at how far we came. For now, I hope your birthday is filled with joy, love, and your most beautiful smile. 🎂</p>
+            <p>Happy Birthday once again, my sweetest baby! I'm always here for you. Until we meet, keep my love in your heart. 🎉</p>
         </div>
     </div>
 
@@ -438,6 +553,11 @@
                     clearInterval(timer);
                     countdownContainer.style.display = 'none';
                     mainContent.style.display = 'block';
+                    
+                    // Show photo collage with fade-in effect
+                    setTimeout(() => {
+                        document.getElementById('photoCollage').classList.add('show');
+                    }, 500);
                     
                     // Show surprise message with fade-in effect after a short delay
                     setTimeout(() => {
@@ -540,11 +660,72 @@
             }
         }
 
+        // Shuffle photo collage images
+        function shufflePhotos() {
+            const photoCollage = document.getElementById('photoCollage');
+            const photos = Array.from(photoCollage.children);
+            
+            // Create array of image sources
+            const imageSources = [
+                'resources/landscape1.jpg',
+                'resources/landscape2.jpg',
+                'resources/landscape3.jpg',
+                'resources/landscape4.jpg',
+                'resources/landscape5.jpg',
+                'resources/landscape6.jpg',
+                'resources/landscape7.jpg',
+                'resources/landscape8.jpg',
+            ];
+            
+            // Shuffle the image sources array
+            for (let i = imageSources.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [imageSources[i], imageSources[j]] = [imageSources[j], imageSources[i]];
+            }
+            
+            // Apply shuffled images to photo elements with staggered fade effect
+            photos.forEach((photo, index) => {
+                if (index < imageSources.length) {
+                    // Staggered fade out with small delays
+                    setTimeout(() => {
+                        photo.style.opacity = '0';
+                        
+                        // After fade out, change image and fade in
+                        setTimeout(() => {
+                            photo.style.backgroundImage = `url('${imageSources[index]}')`;
+                            photo.style.opacity = '1';
+                        }, 1000); // Wait for fade out to complete
+                    }, index * 50); // Stagger each photo by 50ms
+                }
+            });
+        }
+
+        // Auto-reshuffle images every 5 seconds
+        function startAutoReshuffle() {
+            setInterval(() => {
+                // Only reshuffle if photos are visible (after countdown)
+                const photoCollage = document.getElementById('photoCollage');
+                if (photoCollage && photoCollage.classList.contains('show')) {
+                    shufflePhotos();
+                }
+            }, 5000); // 5 seconds
+        }
+
         // Initialize everything
         window.addEventListener('load', () => {
+            shufflePhotos(); // Shuffle images on page load
+            startAutoReshuffle(); // Start auto-reshuffle every 5 seconds
             createStars();
             createHearts();
             startCountdown();
+            
+            // Add night mode transition for photo collage
+            setTimeout(() => {
+                const photoCollage = document.getElementById('photoCollage');
+                if (photoCollage && photoCollage.classList.contains('show')) {
+                    photoCollage.classList.add('night-mode');
+                }
+            }, 12000); // After countdown + delay
         });
 
 
